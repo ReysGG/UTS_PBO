@@ -1,5 +1,17 @@
-/vendor
-/node_modules
+# Ignore Docker database volume
+db/data/
+
+# Ignore environment files
 .env
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temp files
 *.log
-docker/db_data
+*.tmp
+
+# Ignore editor/IDE configs
+.vscode/
+.idea/
