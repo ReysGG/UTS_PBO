@@ -1,0 +1,41 @@
+services:
+  uts_pbo:
+    build: ./php
+    image: uts_pbo_php:latest
+    container_name: uts_pbo
+    hostname: "uts_pbo"
+    volumes:
+      - ./src:/var/www/html
+      - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    working_dir: /var/www/html
+    depends_on:
+      - db_uts_pbo
+  db_uts_pbo:
+    image: mariadb:10.2
+    container_name: db_uts_pbo
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/conf.d:/etc/mysql/conf.d:ro
+    environment:
+      MYSQL_USER: djambred
+      MYSQL_PASSWORD: p455w0rd1!.
+      MYSQL_ROOT_PASSWORD: p455w0rd
+      TZ: Asia/Jakarta
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql_uts_pbo
+  uts_nginx_pbo:
+    build: ./nginx
+    image: uts_nginx_pbo:latest
+    container_name: uts_nginx_pbo
+    hostname: "uts_nginx_abl"
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - uts_pbo
