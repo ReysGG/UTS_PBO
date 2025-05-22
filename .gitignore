@@ -1,8 +1,4 @@
-db/data/ib_logfile0*
-db/data/ob_logfile1*
-db/data/ibtmp1*
-db/data/ibdata1*
-db/data/ibdata*
-db/data/ibtmp*
-db/data/aria_log*
-db/data/ib_buffer_pooldb/data/db/data/
+# Ignore database data (binary files)
+db/data/
+db/*
+!db/conf.d/
