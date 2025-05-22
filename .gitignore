@@ -1,17 +1,8 @@
-# Ignore Docker database volume
-db/data/
-
-# Ignore environment files
-.env
-
-# Ignore OS junk
-.DS_Store
-Thumbs.db
-
-# Ignore logs and temp files
-*.log
-*.tmp
-
-# Ignore editor/IDE configs
-.vscode/
-.idea/
+db/data/ib_logfile0*
+db/data/ob_logfile1*
+db/data/ibtmp1*
+db/data/ibdata1*
+db/data/ibdata*
+db/data/ibtmp*
+db/data/aria_log*
+db/data/ib_buffer_pooldb/data/db/data/
